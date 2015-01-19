@@ -24,7 +24,13 @@ this.QAS = (function (win) {
         else queue.push([cb, args]);
         return QAS;
     }
-    QAS.ready = function () {
+    QAS.sync = function (cb) {
+        cb.sync = true;
+        return QAS.apply(null, arguments);
+    }
+    QAS.ready = ready;
+    QAS.sync.ready = ready;
+    function ready() {
         loaded = true;
         var pair;
         while ((pair = queue.shift())) {
@@ -33,10 +39,11 @@ this.QAS = (function (win) {
     }
     function run(cb, args) {
         if (typeof cb != 'function') return;
-        var that = this;
-        setImmediate(function () {
-            cb.apply(that, args);
-        });
+        cb.sync
+            ? cb.apply(win, args)
+            : setImmediate(function () {
+                cb.apply(win, args);
+            });
     }
     return QAS;
 

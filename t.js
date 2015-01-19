@@ -2,7 +2,7 @@ var tape = require('tape');
 var S = require('./').QAS;
 
 tape('qas', function (test) {
-    test.plan(4);
+    test.plan(6);
     test.equal(typeof S, 'function');
     var a, b, c;
     S(function (e) {
@@ -16,5 +16,9 @@ tape('qas', function (test) {
     c = 3;
     S(function (e) {
         test.equal(c, e);
+    }, 4);
+    S.sync(function (e) {
+        test.equal(c++, e);
     }, 3);
+    test.strictEqual(S.ready, S.sync.ready);
 })
