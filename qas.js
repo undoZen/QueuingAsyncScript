@@ -1,4 +1,4 @@
-this.QAS = (function (window) {
+this.QAS = (function (win) {
     /* asynchronous function queuing script
      * http://stackoverflow.com/questions/6963779/whats-the-name-of-google-analytics-async-design-pattern-and-where-is-it-used
      * usage:
@@ -9,6 +9,11 @@ this.QAS = (function (window) {
      * then in you 3rd part libs ending, add:
      * QAS.ready();
      */
+
+    var setImmediate = win.requestAnimationFrame || win.setImmediate || function (fn) {
+            return setTimeout(fn, 1);
+        };
+    //var clearImmediate = win.cancelAnimationFrame || win.clearImmediate || win.clearTimeout;
 
     var queue = [];
     var loaded;
@@ -28,8 +33,11 @@ this.QAS = (function (window) {
     }
     function run(cb, args) {
         if (typeof cb != 'function') return;
-        cb.apply(this, args);
+        var that = this;
+        setImmediate(function () {
+            cb.apply(that, args);
+        });
     }
     return QAS;
 
-}());
+}(this));
