@@ -1,0 +1,36 @@
+{
+  "name": "qas",
+  "version": "0.0.0",
+  "description": "QueuingAsyncScript",
+  "main": "qas.js",
+  "files": [
+    "qas.js",
+    "qas.min.js"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "uglifyjs qas.js -m -o qas.min.js && cat test/before.html qas.min.js test/after.html > test/index.html",
+    "test": "npm run build && open-browser"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/undoZen/QueuingAsyncScript.git"
+  },
+  "keywords": [
+    "async",
+    "performance"
+  ],
+  "author": "undoZen <opensource@undozen.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/undoZen/QueuingAsyncScript/issues"
+  },
+  "homepage": "https://github.com/undoZen/QueuingAsyncScript",
+  "devDependencies": {
+    "open-browser": "^2.0.0",
+    "tape": "^3.4.0",
+    "uglify-js": "^2.4.16"
+  }
+}
