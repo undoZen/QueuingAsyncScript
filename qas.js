@@ -1,4 +1,4 @@
-window.QAS = (function (window) {
+this.QAS = (function (window) {
     /* asynchronous function queuing script
      * http://stackoverflow.com/questions/6963779/whats-the-name-of-google-analytics-async-design-pattern-and-where-is-it-used
      * usage:
@@ -17,6 +17,7 @@ window.QAS = (function (window) {
         var args = slice.call(arguments, 1);
         if (loaded) run(cb, args);
         else queue.push([cb, args]);
+        return QAS;
     }
     QAS.ready = function () {
         loaded = true;
