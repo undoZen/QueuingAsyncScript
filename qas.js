@@ -16,11 +16,10 @@ this.QAS = (function (win) {
     //var clearImmediate = win.cancelAnimationFrame || win.clearImmediate || win.clearTimeout;
 
     var queue = [];
-    var loaded;
     var slice = Array.prototype.slice;
     var QAS = function (cb) {
         var args = slice.call(arguments, 1);
-        if (loaded) run(cb, args);
+        if (QAS.loaded) run(cb, args);
         else queue.push([cb, args]);
         return QAS;
     }
@@ -31,7 +30,7 @@ this.QAS = (function (win) {
     QAS.ready = ready;
     QAS.sync.ready = ready;
     function ready() {
-        loaded = true;
+        QAS.loaded = true;
         var pair;
         while ((pair = queue.shift())) {
             run(pair[0], pair[1]);
