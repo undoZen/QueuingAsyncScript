@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "uglifyjs qas.js -m -o qas.min.js && cat test/before.html qas.min.js test/after.html > test/index.html",
-    "test": "npm run build && node t && open-browser"
+    "test": "npm run build && node test && open-browser"
   },
   "repository": {
     "type": "git",

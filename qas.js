@@ -15,7 +15,8 @@ this.QAS = (function (win) {
         };
     //var clearImmediate = win.cancelAnimationFrame || win.clearImmediate || win.clearTimeout;
 
-    var queue = [];
+    var queue = [].concat(win._qas_queue);
+    if (win._qas_queue) delete win._qas_queue;
     var slice = Array.prototype.slice;
     var QAS = function (cb) {
         var args = slice.call(arguments, 1);

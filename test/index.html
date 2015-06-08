@@ -1,6 +1,6 @@
 <!doctype html>
 <script>
-this.QAS=function(n){var t=n.requestAnimationFrame||n.setImmediate||function(n){return setTimeout(n,1)};var e=[];var r=Array.prototype.slice;var u=function(n){var t=r.call(arguments,1);if(u.loaded)i(n,t);else e.push([n,t]);return u};u.sync=function(n){n.sync=true;return u.apply(null,arguments)};u.ready=a;u.sync.ready=a;function a(){u.loaded=true;var n;while(n=e.shift()){i(n[0],n[1])}}function i(e,r){if(typeof e!="function")return;e.sync?e.apply(n,r):t(function(){e.apply(n,r)})}return u}(this);</script>
+this.QAS=function(e){var n=e.requestAnimationFrame||e.setImmediate||function(e){return setTimeout(e,1)};var t=[].concat(e._qas_queue);if(e._qas_queue)delete e._qas_queue;var r=Array.prototype.slice;var u=function(e){var n=r.call(arguments,1);if(u.loaded)i(e,n);else t.push([e,n]);return u};u.sync=function(e){e.sync=true;return u.apply(null,arguments)};u.ready=a;u.sync.ready=a;function a(){u.loaded=true;var e;while(e=t.shift()){i(e[0],e[1])}}function i(t,r){if(typeof t!="function")return;t.sync?t.apply(e,r):n(function(){t.apply(e,r)})}return u}(this);</script>
 <script src="a.js"></script>
 <script src="b.js"></script>
 <script src="c.js"></script>
