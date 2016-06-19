@@ -1,1 +1,1 @@
-;(function () { return typeof window.QAS === 'function' ? window.QAS : Array.prototype.push.bind(window._qas_queue ? window._qas_queue : (window._qas_queue = []))}()(function () {
+;(function () { return typeof window.QAS === 'function' ? QAS : function (fn) { (window._qas_queue || (window._qas_queue = [])).push([fn, Array.prototype.slice.call(arguments, 1)]); }; }()(function () {
