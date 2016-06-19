@@ -4,6 +4,8 @@
   "description": "QueuingAsyncScript",
   "main": "qas.js",
   "files": [
+    "loader-wrapper-header.js",
+    "loader-wrapper-footer.js",
     "qas.js",
     "qas.min.js"
   ],
