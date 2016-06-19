@@ -1,6 +1,6 @@
 {
   "name": "qas",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "QueuingAsyncScript",
   "main": "qas.js",
   "files": [
